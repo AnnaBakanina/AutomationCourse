@@ -10,7 +10,7 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            Console.Write("Input the word: ");
+            Console.Write("Введите слово: ");
             string str = Convert.ToString(Console.ReadLine());
             char[] strRev = str.ToCharArray();
             Array.Reverse(strRev);
