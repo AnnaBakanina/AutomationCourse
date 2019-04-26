@@ -52,37 +52,28 @@ namespace Task5
 
             void TaskProcessing()
             {
-                int m = 0, j = 0;
-                Task[] arrayPrior = new Task[m];
+                int m = 0;
                 Console.Write("Введите приоритет задачи: ");
                 string prior = Convert.ToString(Console.ReadLine());
                 Console.Write("Введите количество дней на выполнение задач с заданным приоритетом: ");
                 int days = Convert.ToInt32(Console.ReadLine());
                 double t = 0.0;
-
-
-                //разобраться с количкством задач которые можно успеть сделать
+                
                 Console.WriteLine("Список задач с заданным приоритетом: ");
                 for (int i = 0; i < n; i++)
                 {
                     if (array[i].taskPriopity == prior)
                     {
                         Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + array[i].taskPriopity + ", Сложность - " + array[i].taskLevel + ";");
-                        //while (t<=hoursPerDay*days)
-                        //{
-                        //    t += LevelType(array[i].taskLevel);
-                           arrayPrior[j] = array[i];
-                        //    j++;
-                        //    m++;
-                        //}
                     }
 
                 }
 
+                //какие задачи возможно сделать за N дней с учетом приоритета (N ввести с клавиатуры)
                 Console.WriteLine("Список задач с заданным приоритетом, которые можно выполнить за заданное время: ");
-                for (int i = 0; i < m; i++)
+                for (int i = 0; i < n; i++) 
                 {
-                    Console.Write("Название - " + arrayPrior[i].taskName + ", Приоритет - " + arrayPrior[i].taskPriopity + ", Сложность - " + arrayPrior[i].taskLevel + ";");
+                    Console.Write("Название - " + array[i].taskName + ", Приоритет - " + array[i].taskPriopity + ", Сложность - " + array[i].taskLevel + ";");
                 }
             }
         }
