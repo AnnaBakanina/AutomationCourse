@@ -12,18 +12,19 @@ namespace Task5
     {
         static void Main(string[] args)
         {
-            double time = 0.0, hoursPerDay = 12.0;
+            double time = 0.0, hoursPerDay = 4.0;
             Console.Write("Количество задач - ");
             int n = Convert.ToInt32(Console.ReadLine());
             Console.Write("Количество дней на выполнение задач - ");
             int num = Convert.ToInt32(Console.ReadLine());
             Task[] array = new Task[n];
             AddData();
+            SortArrayByPriority();
+            ShowData();
             Console.WriteLine("Количество времени необходимого для выполнения всех задач - " + time);
             TaskProcessing();
 
             //Methods
-
             void AddData()
             {
                 for (int i = 0; i < n; i++) 
@@ -35,24 +36,63 @@ namespace Task5
                     Console.Write("Сложность: ");
                     string param3 = Convert.ToString(Console.ReadLine());
                     Console.WriteLine();
-                    array[i] = new Task(param1, param2, param3);
+                    array[i] = new Task(param1, GetPriorityID(param2), param3);
 
                     time += LevelType(param3); 
                 }
             }
 
-            double LevelType(string param)
+            void ShowData()
             {
-                if (param == "Сложная") return 4;
-                else if (param == "Средняя") return 2;
-                else if (param == "Легкая") return 1;
+                for (int i = 0; i < n; i++)
+                {
+                    Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + array[i].taskPriopity + ", Сложность - " + array[i].taskLevel + ";");
+                }
+            }
+
+            double LevelType(string taskLevel)
+            {
+                if (taskLevel == "Сложная") return 4;
+                else if (taskLevel == "Средняя") return 2;
+                else if (taskLevel == "Легкая") return 1;
 
                 return -1;
             }
 
+            int GetPriorityID(string taskPriority)
+            {
+                if (taskPriority == "Высокий") return 1;
+                else if (taskPriority == "Средний") return 2;
+                else if (taskPriority == "Низкий") return 3;
+
+                return -1;
+            }
+
+            string GetPriorityByID(int priorityId)
+            {
+                if (priorityId == 1) return "Высокий";
+                else if (priorityId == 2) return "Средний";
+                else if (priorityId == 3) return "Низкий";
+
+                return "";
+            }
+
+            void SortArrayByPriority()
+            {
+                for (int i = 0; i < n-1; i++)
+                {
+                    if (array[i].taskPriopity > array[i + 1].taskPriopity)
+                    {
+                        Task temp;
+                        temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                    }
+                }
+            }
+
             void TaskProcessing()
             {
-                int m = 0;
                 Console.Write("Введите приоритет задачи: ");
                 string prior = Convert.ToString(Console.ReadLine());
                 Console.Write("Введите количество дней на выполнение задач с заданным приоритетом: ");
@@ -62,18 +102,22 @@ namespace Task5
                 Console.WriteLine("Список задач с заданным приоритетом: ");
                 for (int i = 0; i < n; i++)
                 {
-                    if (array[i].taskPriopity == prior)
+                    if (array[i].taskPriopity == GetPriorityID(prior))
                     {
-                        Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + array[i].taskPriopity + ", Сложность - " + array[i].taskLevel + ";");
+                        Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + GetPriorityByID(array[i].taskPriopity) + ", Сложность - " + array[i].taskLevel + ";");
                     }
-
+                    Console.WriteLine();
                 }
-
-                //какие задачи возможно сделать за N дней с учетом приоритета (N ввести с клавиатуры)
+                
                 Console.WriteLine("Список задач с заданным приоритетом, которые можно выполнить за заданное время: ");
                 for (int i = 0; i < n; i++) 
                 {
-                    Console.Write("Название - " + array[i].taskName + ", Приоритет - " + array[i].taskPriopity + ", Сложность - " + array[i].taskLevel + ";");
+                    if (t <= hoursPerDay * days) 
+                    {
+                        t += LevelType(array[i].taskLevel);
+                        Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + GetPriorityByID(array[i].taskPriopity) + ", Сложность - " + array[i].taskLevel + ";");
+                    }
+                    Console.WriteLine();
                 }
             }
         }

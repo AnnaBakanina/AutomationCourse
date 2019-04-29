@@ -9,17 +9,17 @@ namespace Task5
     public class Task
     {
         public string taskName;
-        public string taskPriopity;
+        public int taskPriopity;
         public string taskLevel;
 
         public Task()
         {
             taskName = "";
-            taskPriopity = "";
+            taskPriopity = 0;
             taskLevel = "";
         }
 
-        public Task(string name, string priority, string level)
+        public Task(string name, int priority, string level)
         {
             this.taskName = name;
             this.taskPriopity = priority;
