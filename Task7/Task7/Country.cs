@@ -21,7 +21,5 @@ namespace Task7
         {
             this.Name = Name;
         }
-
-
     }
 }
