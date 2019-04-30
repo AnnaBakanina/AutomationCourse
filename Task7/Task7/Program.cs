@@ -12,10 +12,43 @@ namespace Task7
     {
         static void Main(string[] args)
         {
-            const string path = "D:\\AQA\\NewFile.txt";
+            int n = 0; 
+            const string path = "D:\\AQA\\Tasks_AutoCourses\\Task7\\NewFile.txt";
             Dictionary<int, Country> countries = new Dictionary<int, Country>();
             FileDialog();
-            Output();
+            SetTelenorSupported();
+
+            while (true)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Available options:");
+                Console.WriteLine("1. Add new country");
+                Console.WriteLine("2. Show list of countries that are supported by Telenor");
+                Console.WriteLine("3. Exit");
+
+                if (int.TryParse(Console.ReadLine(), out int menuOption))
+                {
+                    switch (menuOption)
+                    {
+                        case 1:
+                            AddNewCountryToTheDictionary();
+                            break;
+                        case 2:
+                            Output();
+                            break;
+                        case 3:
+                            return;
+                        default:
+                            Console.WriteLine("The value is incorrect, please, try again");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The value is incorrect, please, try again");
+                }
+            }
+        
 
             void FileDialog()
             {
@@ -26,6 +59,7 @@ namespace Task7
                     while ((line = stream.ReadLine()) != null)
                     {
                         countries.Add(i,new Country(line));
+                        n = i;
                         i++;
                     }
                 }
@@ -35,7 +69,25 @@ namespace Task7
             {
                 foreach (KeyValuePair<int, Country> keyValue in countries)
                 {
-                    Console.WriteLine(keyValue.Key + " - " + keyValue.Value.Name);
+                    if (keyValue.Value.IsTelenorSupported == false)
+                        Console.WriteLine("" + keyValue.Value.Name);
+                }
+            }
+
+            void AddNewCountryToTheDictionary()
+            {
+                n += 1;
+                Console.Write("Input name of country: ");
+                string cName = Convert.ToString(Console.ReadLine());
+                countries.Add(n, new Country(cName));
+            }
+
+            void SetTelenorSupported()
+            {
+                foreach (KeyValuePair<int, Country> keyValue in countries)
+                {
+                    if (keyValue.Value.Name == "Denmark" || keyValue.Value.Name == "Hungary")
+                        keyValue.Value.IsTelenorSupported = true;
                 }
             }
         }
