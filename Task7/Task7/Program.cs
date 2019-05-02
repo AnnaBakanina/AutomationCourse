@@ -49,7 +49,6 @@ namespace Task7
                 }
             }
         
-
             void FileDialog()
             {
                 int i = 1;

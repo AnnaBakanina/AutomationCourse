@@ -21,7 +21,7 @@ namespace Task5
             AddData();
             SortArrayByPriority();
             SortArrayByTaskLevel();
-            Console.WriteLine("Количество времени необходимого для выполнения всех задач - " + time);
+            Console.WriteLine($"Количество времени необходимого для выполнения всех задач - {time}");
             TaskProcessing();
 
             //Methods
@@ -113,18 +113,17 @@ namespace Task5
                 {
                     if (array[i].taskPriopity == GetPriorityID(prior))
                     {
-                        Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + GetPriorityByID(array[i].taskPriopity) + ", Сложность - " + array[i].taskLevel + ";");
+                        Console.WriteLine($"Название - {array[i].taskName}, Приоритет - {GetPriorityByID(array[i].taskPriopity)}, Сложность - {array[i].taskLevel};");
                     }
                 }
                 
                 Console.WriteLine("Список задач с заданным приоритетом, которые можно выполнить за заданное время: ");
-
                 for (int i = 0; i < n; i++) 
                 {
                     t += LevelType(array[i].taskLevel);
                     if (t <= hoursPerDay * days) 
                     {
-                        Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + GetPriorityByID(array[i].taskPriopity) + ", Сложность - " + array[i].taskLevel + ";");
+                        Console.WriteLine($"Название - {array[i].taskName}, Приоритет - {GetPriorityByID(array[i].taskPriopity)}, Сложность - {array[i].taskLevel};");
                     }
                 }
             }

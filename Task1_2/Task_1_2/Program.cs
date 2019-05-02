@@ -30,8 +30,8 @@ namespace Task_1_2
                 return val;
             }
 
-            Console.WriteLine("Площадь круга: " + GetAreaOfСircle());
-            Console.WriteLine("Площадь квадрата:  " + GetAreaOfSquare());
+            Console.WriteLine($"Площадь круга:{GetAreaOfСircle()}");
+            Console.WriteLine($"Площадь квадрата:{GetAreaOfSquare()}");
             if (SquareCanBePutInCircle() == true) Console.WriteLine("Круг можно вписать в квадрат");
             else Console.WriteLine("Квадрат можно вписать в круг");
         }
