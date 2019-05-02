@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Shipment_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Order_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,10 +41,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbSelect = new System.Windows.Forms.ComboBox();
-            this.Shipment_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Order_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,26 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(515, 212);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Shipment_ID
+            // 
+            this.Shipment_ID.HeaderText = "Shipment ID";
+            this.Shipment_ID.Name = "Shipment_ID";
+            // 
+            // Address
+            // 
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            // 
+            // Order_ID
+            // 
+            this.Order_ID.HeaderText = "Order ID";
+            this.Order_ID.Name = "Order_ID";
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Shipment Status";
+            this.Status.Name = "Status";
             // 
             // menuStrip1
             // 
@@ -84,24 +104,28 @@
             this.addNewCustomerToolStripMenuItem.Name = "addNewCustomerToolStripMenuItem";
             this.addNewCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNewCustomerToolStripMenuItem.Text = "Add new Customer";
+            this.addNewCustomerToolStripMenuItem.Click += new System.EventHandler(this.addNewCustomerToolStripMenuItem_Click);
             // 
             // addNewOrderToolStripMenuItem
             // 
             this.addNewOrderToolStripMenuItem.Name = "addNewOrderToolStripMenuItem";
             this.addNewOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNewOrderToolStripMenuItem.Text = "Add new Order";
+            this.addNewOrderToolStripMenuItem.Click += new System.EventHandler(this.addNewOrderToolStripMenuItem_Click);
             // 
             // addNewShipmentToolStripMenuItem
             // 
             this.addNewShipmentToolStripMenuItem.Name = "addNewShipmentToolStripMenuItem";
             this.addNewShipmentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNewShipmentToolStripMenuItem.Text = "Add new Shipment";
+            this.addNewShipmentToolStripMenuItem.Click += new System.EventHandler(this.addNewShipmentToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -120,26 +144,6 @@
             this.cmbSelect.Name = "cmbSelect";
             this.cmbSelect.Size = new System.Drawing.Size(121, 21);
             this.cmbSelect.TabIndex = 6;
-            // 
-            // Shipment_ID
-            // 
-            this.Shipment_ID.HeaderText = "Shipment ID";
-            this.Shipment_ID.Name = "Shipment_ID";
-            // 
-            // Address
-            // 
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            // 
-            // Order_ID
-            // 
-            this.Order_ID.HeaderText = "Order ID";
-            this.Order_ID.Name = "Order_ID";
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Shipment Status";
-            this.Status.Name = "Status";
             // 
             // Form1
             // 

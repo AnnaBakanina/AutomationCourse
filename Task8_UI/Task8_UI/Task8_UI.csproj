@@ -53,12 +53,39 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddCustomer.Designer.cs">
+      <DependentUpon>FrmAddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddOrder.Designer.cs">
+      <DependentUpon>FrmAddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddShipment.Designer.cs">
+      <DependentUpon>FrmAddShipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shipment.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddCustomer.resx">
+      <DependentUpon>FrmAddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddOrder.resx">
+      <DependentUpon>FrmAddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddShipment.resx">
+      <DependentUpon>FrmAddShipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
