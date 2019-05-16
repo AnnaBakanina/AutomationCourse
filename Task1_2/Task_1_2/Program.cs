@@ -7,33 +7,45 @@ namespace Task_1_2
         static void Main(string[] args)
         {
             const double Pi = 3.14;
-            Console.Write("Введите радиус: ");
-            double r = Convert.ToDouble(Console.ReadLine()); //радиус
-            Console.Write("Введите сторону: ");
-            double a = Convert.ToDouble(Console.ReadLine()); //сторона квадрата
+            Console.Write("Input radius: ");
+            double Radius = Convert.ToDouble(Console.ReadLine()); 
+            Console.Write("Input square side: ");
+            double SquareSide = Convert.ToDouble(Console.ReadLine()); 
 
             double GetAreaOfСircle()
             {
-                return Pi*Math.Pow(r,2);
+                return Pi * Math.Pow(Radius, 2);
             }
 
             double GetAreaOfSquare()
             {
-                return Math.Pow(a, 2);
+                return Math.Pow(SquareSide, 2);
             }
 
-            bool SquareCanBePutInCircle()
-            {
-                bool val = true;
-                if (r * 2 < a) val = true;
-                else if (r * 2 >= a*Math.Sqrt(2)) val = false;
-                return val;
-            }
+            //bool SquareCanBePutInCircle()
+            //{
+            //    bool PutSquareInCircle = true;
+            //    if (Radius * 2 < SquareSide)
+            //    {
+            //        PutSquareInCircle = true;
+            //    }
+            //    else if (Radius * 2 >= SquareSide * Math.Sqrt(2))
+            //    {
+            //        PutSquareInCircle = false;
+            //    }
+            //    return PutSquareInCircle;
+            //}
 
-            Console.WriteLine("Площадь круга: " + GetAreaOfСircle());
-            Console.WriteLine("Площадь квадрата:  " + GetAreaOfSquare());
-            if (SquareCanBePutInCircle() == true) Console.WriteLine("Круг можно вписать в квадрат");
-            else Console.WriteLine("Квадрат можно вписать в круг");
+            //Console.WriteLine("Square area: " + GetAreaOfСircle());
+            //Console.WriteLine("Circle area:  " + GetAreaOfSquare());
+            //if (SquareCanBePutInCircle() == true)
+            //{
+            //    Console.WriteLine("Circle can be put in square");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Square can be put in circle");
+            //}
         }
     }
 }

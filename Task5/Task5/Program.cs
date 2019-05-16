@@ -106,7 +106,6 @@ namespace Task5
                     {
                         Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + GetPriorityByID(array[i].taskPriopity) + ", Сложность - " + array[i].taskLevel + ";");
                     }
-                    Console.WriteLine();
                 }
                 
                 Console.WriteLine("Список задач с заданным приоритетом, которые можно выполнить за заданное время: ");
@@ -114,10 +113,9 @@ namespace Task5
                 {
                     if (t <= hoursPerDay * days) 
                     {
-                        t += LevelType(array[i].taskLevel);
                         Console.WriteLine("Название - " + array[i].taskName + ", Приоритет - " + GetPriorityByID(array[i].taskPriopity) + ", Сложность - " + array[i].taskLevel + ";");
                     }
-                    Console.WriteLine();
+                    t += LevelType(array[i].taskLevel);
                 }
             }
         }
