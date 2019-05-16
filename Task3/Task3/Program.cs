@@ -23,7 +23,7 @@ namespace Task3
                 else Console.WriteLine("Value out of the range!");
                 if (array[i] % 3 == 0 && array[i] % 5 != 0) sum += array[i];
             }
-            Console.WriteLine("Sum =" + sum);
+            Console.WriteLine($"Sum ={sum}");
         }
     }
 }

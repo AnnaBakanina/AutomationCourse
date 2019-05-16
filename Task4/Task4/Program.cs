@@ -15,8 +15,8 @@ namespace Task4
             char[] strRev = str.ToCharArray();
             Array.Reverse(strRev);
             string conv_str = new string(strRev);
-            if (str == conv_str) Console.WriteLine("Слово \"" + str + "\" - палендром");
-            else Console.WriteLine("Слово \"" + str + "\" - не палендром");
+            if (str == conv_str) Console.WriteLine($"Слово \"{str}\" - палендром");
+            else Console.WriteLine($"Слово \"{str}\" - не палендром");
         }
     }
 }

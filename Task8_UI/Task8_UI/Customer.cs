@@ -4,21 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task7
+namespace Task8_UI
 {
-    public class Country
+    //Guid.NewGuid().ToString();
+    public class Customer
     {
+        public string CustomerID;
         public string Name;
-        public bool IsTelenorSupported;
 
-        public Country()
+        public Customer()
         {
+            CustomerID = "";
             Name = "";
-            IsTelenorSupported = false;
         }
 
-        public Country(string Name)
+        public Customer(string ID, string Name)
         {
+            this.CustomerID = ID;
             this.Name = Name;
         }
     }
