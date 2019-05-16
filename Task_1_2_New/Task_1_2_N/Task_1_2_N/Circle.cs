@@ -21,6 +21,10 @@ namespace Task_1_2_N
                 {
                     _radius = value;
                 }
+                else
+                {
+                    Console.WriteLine("Value need to be bigger then 0.");
+                }
             }
         }
 

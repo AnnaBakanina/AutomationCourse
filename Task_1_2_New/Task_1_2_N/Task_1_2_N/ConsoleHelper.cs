@@ -16,7 +16,7 @@ namespace Task_1_2_N
             while (!inputedValueIsValid)
             {
                 Console.Write("Input radius: ");
-                if (double.TryParse(Console.ReadLine(), out inputedValue))
+                if (double.TryParse(Console.ReadLine(), out inputedValue) == true) 
                 {
                     inputedValueIsValid = true;
                     return inputedValue;
@@ -67,7 +67,7 @@ namespace Task_1_2_N
         public static void GetResult(Square square, Circle circle)
         {
             Console.WriteLine("Circle area: " + circle.GetAreaOfСircle());
-            Console.WriteLine("Square area:  " + square.GetAreaOfSquare());
+            Console.WriteLine("Square area: " + square.GetAreaOfSquare());
             if (SquareCanBePutInCircle(circle.Radius, square.Side) == true)
             {
                 Console.WriteLine("Circle can be put in square");
