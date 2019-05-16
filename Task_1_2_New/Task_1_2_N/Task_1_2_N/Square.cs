@@ -8,34 +8,11 @@ namespace Task_1_2_N
 {
     class Square
     {
-        private double _side;
-        public double Side
-        {
-            get
-            {
-                return _side;
-            }
-            set
-            {
-                if (value > 0)
-                {
-                    _side = value;
-                }
-                else
-                {
-                    Console.WriteLine("Value need to be bigger then 0.");
-                }
-            }
-        }
+        public double Side { get; set; }
 
         public Square()
         {
-            Side = 0.0;
-        }
-
-        public Square(double squareSide)
-        {
-            Side = squareSide;
+            Side = ConsoleHelper.GetValueToCreateObject("side of square");
         }
 
         public double GetAreaOfSquare()

@@ -8,35 +8,21 @@ namespace Task_1_2_N
 {
     class ConsoleHelper
     {
-        public static double GetValueToCreateObjectTypeOfCircle()
+        public static double GetValueToCreateObject(string typeValue)
         {
             double inputedValue;
             bool inputedValueIsValid = false;
-
+            int tries = 3;
             while (!inputedValueIsValid)
             {
-                Console.Write("Input radius: ");
-                if (double.TryParse(Console.ReadLine(), out inputedValue) == true) 
+                if (tries == 0)
                 {
-                    inputedValueIsValid = true;
-                    return inputedValue;
+                    Console.WriteLine("The number of tries is expired.");
+                    inputedValue = 5;
+                    break;
                 }
-                else
-                {
-                    Console.WriteLine("Invalid value was entered.");
-                }
-            }
-            return -1;
-        }
 
-        public static double GetValueToCreateObjectTypeOfSquare()
-        {
-            double inputedValue;
-            bool inputedValueIsValid = false;
-
-            while (!inputedValueIsValid)
-            {
-                Console.Write("Input square side: ");
+                Console.Write($"Input {typeValue}: ");
                 if (double.TryParse(Console.ReadLine(), out inputedValue))
                 {
                     inputedValueIsValid = true;
@@ -46,6 +32,8 @@ namespace Task_1_2_N
                 {
                     Console.WriteLine("Invalid value was entered.");
                 }
+
+                tries--;
             }
             return -1;
         }

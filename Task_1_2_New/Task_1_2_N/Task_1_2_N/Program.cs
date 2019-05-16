@@ -10,8 +10,8 @@ namespace Task_1_2_N
     {
         static void Main(string[] args)
         {
-            Circle circle = new Circle(ConsoleHelper.GetValueToCreateObjectTypeOfCircle());
-            Square square = new Square(ConsoleHelper.GetValueToCreateObjectTypeOfSquare());
+            Circle circle = new Circle();
+            Square square = new Square();
             ConsoleHelper.GetResult(square, circle);
         }
     }
