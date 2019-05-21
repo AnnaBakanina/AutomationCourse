@@ -10,13 +10,38 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            Console.Write("Введите слово: ");
-            string str = Convert.ToString(Console.ReadLine());
-            char[] strRev = str.ToCharArray();
-            Array.Reverse(strRev);
-            string conv_str = new string(strRev);
-            if (str == conv_str) Console.WriteLine($"Слово \"{str}\" - палендром");
-            else Console.WriteLine($"Слово \"{str}\" - не палендром");
+            Console.Write("Input phrase: ");
+            string str = Console.ReadLine();
+            char[] strArray = str.ToCharArray();
+            char[] symbols = { '!', ',', '.', '?', ' ' };
+            string strProcessed = string.Empty;
+            //need to be finished
+
+            //for (int i = 0; i < strArray.Length; i++)
+            //{
+            //    for (int j = 0; j < symbols.Length; j++) 
+            //    {
+            //        if (strArray[i] == symbols[j])
+            //        {
+            //            break;
+            //        }
+            //    }
+            //    strProcessed += strArray[i];
+            //}
+            string strReversed = string.Empty;
+            for (int i = strArray.Length - 1; i >= 0; i--) 
+            {
+                strReversed += strArray[i];
+            }
+
+            if (strReversed.ToLower() == str.ToLower())
+            {
+                Console.WriteLine($"The word \"{str}\" is palendrom");
+            }
+            else
+            {
+                Console.WriteLine($"The word \"{str}\" is not palendrom");
+            }
         }
     }
 }
