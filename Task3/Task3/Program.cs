@@ -10,11 +10,12 @@ namespace Task3
     {
         static void Main(string[] args)
         {
+            int sumOfElements = 0;
+
             Console.Write("Input start range value: ");
             int startRange = Convert.ToInt32(Console.ReadLine()); ;
             Console.Write("Input end range value: ");
             int endRange = Convert.ToInt32(Console.ReadLine()); ;
-            int sumOfElements = 0;
             int numberOfElements = endRange - startRange;
             int[] array = new int[numberOfElements];
             for (int i = 0; i < numberOfElements; i++) 
