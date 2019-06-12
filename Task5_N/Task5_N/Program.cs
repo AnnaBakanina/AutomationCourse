@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task6
+namespace Task5_N
 {
     class Program
     {
         static void Main(string[] args)
         {
-            
+            ConsoleHelper.OutputList(ConsoleHelper.AddListOfTasks());
         }
     }
 }

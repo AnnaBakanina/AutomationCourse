@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task5
+namespace Task5_N
 {
-    public class Task
+   public class Task
     {
         public string TaskName { get; set; }
         public int TaskPriority { get; set; }

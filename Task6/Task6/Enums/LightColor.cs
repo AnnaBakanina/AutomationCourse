@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task6
+namespace Task6.Enums
 {
-    class Program
+    public class LightColor
     {
-        static void Main(string[] args)
+        public enum Color
         {
-            
+            Red =1,
+            Green,
+            Blue
         }
     }
 }

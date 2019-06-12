@@ -12,12 +12,11 @@ namespace Task4
         {
             string strProcessed = string.Empty;
             string strReversed = string.Empty;
-            char[] symbols = { '!', ',', '.', '?', ' ' };
-
+            char[] symbols = { '!', ',', '.', '?', ' ', '\''};
             Console.Write("Input phrase: ");
             string str = Console.ReadLine();
             char[] strArray = str.ToCharArray();
-
+           
             for (int i = 0; i < strArray.Length; i++)
             {
                 for (int j = 0; j < symbols.Length; j++)
@@ -26,7 +25,7 @@ namespace Task4
                     {
                         break;
                     }
-                    if (j==symbols.Length-1)
+                    if (j == symbols.Length - 1) 
                     {
                         strProcessed += strArray[i];
                     }

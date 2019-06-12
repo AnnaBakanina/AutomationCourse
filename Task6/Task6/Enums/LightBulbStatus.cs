@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task6
+namespace Task6.Enums
 {
-    class Program
+    public class LightBulbStatus
     {
-        static void Main(string[] args)
+        public enum Status
         {
-            
+            On = 1,
+            Off = 0
         }
     }
 }

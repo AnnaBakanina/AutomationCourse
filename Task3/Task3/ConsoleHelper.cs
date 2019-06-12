@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task6
+namespace Task3
 {
-    class Program
+    class ConsoleHelper
     {
-        static void Main(string[] args)
-        {
-            
-        }
     }
 }

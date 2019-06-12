@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task6
 {
-    abstract class Garland
+    public abstract class Garland/*<T> where T: Bulb*/
     {
-
+        public abstract void BuildGarland(int numberOfLights);
     }
 }

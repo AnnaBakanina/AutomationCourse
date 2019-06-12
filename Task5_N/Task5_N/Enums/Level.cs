@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task6
+namespace Task5_N.Enums
 {
-    class Program
+    class Level
     {
-        static void Main(string[] args)
+        public enum TaskLevel
         {
-            
+            Hard=1,
+            Middle,
+            Easy
         }
     }
 }

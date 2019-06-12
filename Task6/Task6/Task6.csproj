@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColoredLight.cs" />
+    <Compile Include="Enums\LightBulbStatus.cs" />
+    <Compile Include="Enums\LightColor.cs" />
     <Compile Include="Garland.cs" />
+    <Compile Include="Light.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
