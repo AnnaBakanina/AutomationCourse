@@ -3,8 +3,11 @@ namespace M_Task6.Enums
 {
     public enum LightColor
     {
-        Red = 1,
+        Red,
+        Orange,
+        Yellow,
         Green,
-        Blue
+        Blue,
+        Purpule
     }
 }

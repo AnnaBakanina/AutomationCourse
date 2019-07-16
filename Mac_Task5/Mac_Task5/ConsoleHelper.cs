@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mac_Task5
 {
@@ -49,7 +50,7 @@ namespace Mac_Task5
             Enums.Priority enumDisplayStatus = (Enums.Priority)value;
             string stringValuePriority = enumDisplayStatus.ToString();
 
-            var valueLevel = taskList[index].TaskLevel; //check get/give val
+            var valueLevel = taskList[index].TaskLevel; 
             Enums.Level enumDisplayStatusLevel = (Enums.Level)valueLevel;
             string stringValueLevel = enumDisplayStatusLevel.ToString();
 
@@ -92,64 +93,51 @@ namespace Mac_Task5
                     return -1;
             }
 
-            //var value = taskLevel;
-            //Enums.Level enumDisplayStatus = (Enums.Level)value;
-            //var stringValue = enumDisplayStatus;
-            //Enums.Time getLevel = (Enums.Time)stringValue;
         }
 
-        public static void SortList() 
+        public static void SortList() //chech one more dif variants
         {
-            for (int i = 0; i < taskList.Count - 1; i++)
-            {
-                if (taskList[i].TaskPriority > taskList[i + 1].TaskPriority)
-                {
-                    Task temp;
-                    temp = taskList[i];
-                    taskList[i] = taskList[i + 1];
-                    taskList[i + 1] = temp;
-                }
-            }
+            List<Task> sortedTasks = taskList.OrderBy(x => x.TaskPriority).ToList().OrderByDescending(x => x.TaskLevel).ToList(); //don't sort by level
 
-            for (int i = 0; i < taskList.Count - 1; i++)
-            {
-                if (taskList[i].TaskPriority == taskList[i + 1].TaskPriority)
-                {
-                    if (GetTime(taskList[i].TaskLevel) > GetTime(taskList[i + 1].TaskLevel) || GetTime(taskList[i].TaskLevel) < GetTime(taskList[i + 1].TaskLevel))
-                    {
-                        Task temp;
-                        temp = taskList[i];
-                        taskList[i] = taskList[i + 1];
-                        taskList[i + 1] = temp;
-                    }
-                }
-            }
-        }
-
-        public static void NumberOfDaysNeededToDoTaskWithSelectedPriority()
-        {
-            double time = 0.0;
-            //Console.Write("Input task priority (1-High, 2-Middle, 3-Low): ");
-            //int selectedPriority = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Number of days that needed to do tasks: ");
-            int days = Convert.ToInt32(Console.ReadLine());
-
-            //Console.WriteLine("List of tasks with needed priority: ");
-            //for (int i = 0; i < taskList.Count; i++)
+            //for (int i = 0; i < taskList.Count - 1; i++)
             //{
-            //    if (taskList[i].TaskPriority == selectedPriority)
+            //    if (taskList[i].TaskPriority > taskList[i + 1].TaskPriority)
             //    {
-            //        OutputList(i);
+            //        Task temp;
+            //        temp = taskList[i];
+            //        taskList[i] = taskList[i + 1];
+            //        taskList[i + 1] = temp;
             //    }
             //}
+
+            //for (int i = 0; i < taskList.Count - 1; i++)
+            //{
+            //    if (taskList[i].TaskPriority == taskList[i + 1].TaskPriority)
+            //    {
+            //        if (GetTime(taskList[i].TaskLevel) > GetTime(taskList[i + 1].TaskLevel) || GetTime(taskList[i].TaskLevel) < GetTime(taskList[i + 1].TaskLevel))
+            //        {
+            //            Task temp;
+            //            temp = taskList[i];
+            //            taskList[i] = taskList[i + 1];
+            //            taskList[i + 1] = temp;
+            //        }
+            //    }
+            //}
+        }
+
+        public static void NumberOfDaysNeededToDoTaskWithSelectedPriority() 
+        {
+            double time = 0.0;
+            Console.Write("Number of days that needed to do tasks: ");
+            int days = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("List of tasks that can be done during entered number of days: ");
             for (int i = 0; i < taskList.Count; i++)
             {
                 double enteredTime = hoursPerDay * days;
-                time += GetTime(taskList[i].TaskLevel);
-                if (time <= enteredTime && GetTime(taskList[i].TaskLevel)- enteredTime <= enteredTime)
+                if (time+ GetTime(taskList[i].TaskLevel)<=enteredTime)
                 {
+                    time += GetTime(taskList[i].TaskLevel);
                     OutputList(i);
                 }
                 else

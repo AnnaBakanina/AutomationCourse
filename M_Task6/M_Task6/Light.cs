@@ -6,20 +6,21 @@ namespace M_Task6
 {
     public class Light
     {
-        public DateTime CurrentMinutes;
-        public int LightStatus;
+        public string LightStatus;
 
         public Light()
         {
-            var minutes = DateTime.Now.Minute;
-            if (minutes % 2 == 0)
-            {
-                LightStatus = (int)LightBulbStatus.On;
-            }
-            else
-            {
-                LightStatus = (int)LightBulbStatus.Off;
-            }
+            LightStatus = string.Empty;
+        }
+
+        public Light(string lightStatus)
+        {
+            LightStatus = lightStatus;
+        }
+
+        public virtual void PrintLight()
+        {
+            Console.WriteLine($"Buble is {LightStatus}");
         }
     }
 }

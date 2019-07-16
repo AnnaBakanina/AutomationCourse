@@ -6,10 +6,13 @@ namespace M_Task6
     {
         public static void Main(string[] args)
         {
-            T lamp = new T();
-            ColoredLight cLamp = new ColoredLight();
-            lamp.BuildGarland(6);
-            cLamp.BuildGarland(6);
+            LightGarland lightGarland = new LightGarland(6);
+            Console.WriteLine("Plain garland:");
+            lightGarland.PrintGarland();
+            ColoredLightGarland coloredLightGarland = new ColoredLightGarland(6);
+            Console.WriteLine();
+            Console.WriteLine("Colored garland:");
+            coloredLightGarland.PrintGarland(); //debug On status light color
         }
     }
 }
