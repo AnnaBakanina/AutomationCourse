@@ -9,6 +9,11 @@ namespace Mac_Task5
         public const double hoursPerDay = 8.0;
         public static List<Task> taskList = new List<Task>();
 
+        public static int GetTaskSortParameter(int priority, int level)
+        {
+            return Convert.ToInt32($"{priority}{level}");
+        }
+
         public static List<Task> AddListOfTasks()
         {
             double timeForTasks = 0.0;
@@ -24,7 +29,7 @@ namespace Mac_Task5
                 Console.Write("Input task level (1-Hard, 2-Middle, 3-Easy): ");
                 int param3 = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine();
-                taskList.Add(new Task(param1, param2, param3));
+                taskList.Add(new Task(param1, param2, param3, GetTaskSortParameter(param2, param3)));
 
                 timeForTasks += GetTime(param3);
 
@@ -95,10 +100,11 @@ namespace Mac_Task5
 
         }
 
-        public static void SortList() //chech one more dif variants
+        public static void SortList() 
         {
-            List<Task> sortedTasks = taskList.OrderBy(x => x.TaskPriority).ToList().OrderByDescending(x => x.TaskLevel).ToList(); //don't sort by level
-
+            List<Task> sortedTasks = taskList.OrderBy(x => x.TaskSortParameter).ToList();
+            taskList = sortedTasks;
+            
             //for (int i = 0; i < taskList.Count - 1; i++)
             //{
             //    if (taskList[i].TaskPriority > taskList[i + 1].TaskPriority)
@@ -114,7 +120,7 @@ namespace Mac_Task5
             //{
             //    if (taskList[i].TaskPriority == taskList[i + 1].TaskPriority)
             //    {
-            //        if (GetTime(taskList[i].TaskLevel) > GetTime(taskList[i + 1].TaskLevel) || GetTime(taskList[i].TaskLevel) < GetTime(taskList[i + 1].TaskLevel))
+            //        if (taskList[i].TaskLevel > taskList[i + 1].TaskLevel || taskList[i].TaskLevel < taskList[i + 1].TaskLevel)
             //        {
             //            Task temp;
             //            temp = taskList[i];

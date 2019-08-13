@@ -1,52 +1,65 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace NUnit_Task
 {
     [TestFixture, Description("Tests for Calculator")]
+    [Category("Calculator Tests")]
     public class CalculatorTests
     {
+        double firstNumber;
+        double secondNumber;
+        private double[] arrayToTest;
+        Calculator Calculator;
+
         [SetUp]
         public void SetUp()
         {
-            System.Diagnostics.Debug.WriteLine("Start tests");
+            firstNumber = 12;
+            secondNumber = 17;
+            arrayToTest = new double[] { 1, 3, 4, 5, 5 };
+            Calculator = new Calculator();
         }
 
         [Test, Description("Check add operation")]
         public void CheckAdding()
         {
-            Calculator numbers = new Calculator();
-            double additionResult = numbers.AddNumbers();
-            
-            Assert.That(numbers.FirstNumber + numbers.SecondNumber, Is.EqualTo(additionResult), "Adding numbers test: False");
+            double additionResult = Calculator.AddNumbers(arrayToTest);
+
+            Assert.That(arrayToTest.Sum(), Is.EqualTo(additionResult),
+                $"Check that sum of numbers is equal to '{arrayToTest.Aggregate((x, y) => x + y)}'.");
         }
 
         [Test, Description("Check subtract operation")]
         public void CheckSubtraction()
         {
-            Calculator numbers = new Calculator();
-            double substractionResult = numbers.SubtractNumbers();
+            double substractionResult = Calculator.SubtractNumbers(arrayToTest);
+            double calculationResult = arrayToTest.Aggregate((x, y) => x - y);
 
-            Assert.That(numbers.FirstNumber - numbers.SecondNumber, Is.EqualTo(substractionResult), "Subtrac numbers test: False");
+            Assert.That(calculationResult, Is.EqualTo(substractionResult),
+                $"Check that {arrayToTest.ToString()} is equal to '{calculationResult}'.") ;
         }
 
         [Test, Description("Check devition operation")]
         public void CheckDevition()
         {
-            Calculator numbers = new Calculator();
-            double divitionResult = numbers.DivideNumbers();
+            double divitionResult = Calculator.DivideNumbers(firstNumber, secondNumber);
+            double calculationResult = firstNumber / secondNumber;
 
-            Assert.That(numbers.SecondNumber, Is.Not.EqualTo(0), "Divition on 0 can't be performed");
-            Assert.That(numbers.FirstNumber / numbers.SecondNumber, Is.EqualTo(divitionResult), "Divition numbers test: False");
+            Assert.That(secondNumber, Is.Not.EqualTo(0), "Divition on 0 can't be performed");
+            Assert.That(calculationResult, Is.EqualTo(divitionResult),
+                $"Check that {firstNumber}/{secondNumber} is equal to '{calculationResult}'.");
         }
 
         [Test, Description("Check multiplying operation")]
         public void CheckMultiply()
         {
-            Calculator numbers = new Calculator();
-            double multiplyingResult = numbers.MultiplyNumbers();
+            double multiplyingResult = Calculator.MultiplyNumbers(arrayToTest);
+            double calculationResult = arrayToTest.Aggregate((x, y) => x * y);
 
-            Assert.That(numbers.FirstNumber * numbers.SecondNumber, Is.EqualTo(multiplyingResult), "Multiply numbers test: False");
+            Assert.That(calculationResult, Is.EqualTo(multiplyingResult),
+                $"Check that {arrayToTest.ToString()} is equal to '{calculationResult}'.");
         }
 
         [TearDown]

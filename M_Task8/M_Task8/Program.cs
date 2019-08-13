@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace M_Task8
 {
@@ -6,7 +7,8 @@ namespace M_Task8
     {
         public static void Main(string[] args)
         {
-            //https://metanit.com/sharp/tutorial/6.5.php
+            Shipment shipment = new Shipment("ShipmentID", "ShipmentAddress", true);
+            FileHelper.SerealizationIntoJSONFile(shipment, "/Users/annabakanina/Documents/shipmentS.json");
         }
     }
 }

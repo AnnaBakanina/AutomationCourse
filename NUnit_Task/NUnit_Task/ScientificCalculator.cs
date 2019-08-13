@@ -20,7 +20,7 @@ namespace NUnit_Task
             return Math.Abs(x) % Math.Abs(y);
         }
 
-        public double SumOfArrayValues(double [] array)
+        public double SumOfArrayValues(double[] array)
         {
             return array.Sum();
         }

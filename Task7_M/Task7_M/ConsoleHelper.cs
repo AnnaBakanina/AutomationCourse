@@ -6,13 +6,10 @@ namespace Task7_M
 {
     public class ConsoleHelper
     {
-        public static int numberOfItemsInDictionary = 0;
-        public static Dictionary<int, Country> countries = new Dictionary<int, Country>();
-
-        public static void ReadFromFile()
+        public static List<Country> ReadFromFile()
         {
-            List<string> list = new List<string> { "!", ",", ".", "?", " ", "\'" };
-            int index = 1;
+            List<string> Symbolslist = new List<string> { "!", ",", ".", "?", " ", "\'" };
+            List<Country> CountriesNamesList = new List<Country>();
 
             using (StreamReader stream = new StreamReader("text.txt", System.Text.Encoding.Default))
             {
@@ -22,55 +19,38 @@ namespace Task7_M
                 {
                     if (line == string.Empty)
                     {
+                        countryName = string.Empty;
                         continue;
                     }
-                    list.ForEach(_ =>
+                    Symbolslist.ForEach(_ =>
                     {
-                        string a = line.Trim().Replace(_, string.Empty);
-
+                        string cName = line.Trim().Replace(_,string.Empty);
+                        if (cName!=line)
+                        {
+                            countryName = cName;
+                            line = cName;
+                        }
+                        else
+                        {
+                            countryName = line;
+                        }
                     });
 
-                    countries.Add(index, new Country(countryName));
-                    numberOfItemsInDictionary = index;
-                    index++;
+                    CountriesNamesList.Add(new Country(countryName));
                 }
+                return CountriesNamesList;
             }
         }
 
-        public static void Output()
+        public static void Output(Dictionary<int, Country> dictionary)
         {
-            foreach (KeyValuePair<int, Country> keyValue in countries)
+            foreach (KeyValuePair<int, Country> keyValue in dictionary)
             {
-                if (keyValue.Value.IsTelenorSupported == false)
+                if (!keyValue.Value.IsTelenorSupported)
+                {
                     Console.WriteLine("" + keyValue.Value.Name);
-            }
-        }
-
-        public static void AddNewCountryToTheDictionary()
-        {
-            numberOfItemsInDictionary += 1;
-            countries.Add(numberOfItemsInDictionary, new Country("Ukraine"));
-            using (StreamWriter sw = new StreamWriter("text.txt", false, System.Text.Encoding.Default))
-            {
-                foreach (KeyValuePair<int, Country> keyValue in countries)
-                {
-                    sw.WriteLine(keyValue.Value.Name);
                 }
             }
-        }
-
-
-        public static void SetTelenorSupported()
-        {
-            foreach (KeyValuePair<int, Country> keyValue in countries)
-            {
-                var isEqualDenmark = string.Equals(keyValue.Value.Name, "Denmark", StringComparison.OrdinalIgnoreCase);
-                var isEqualHungary = string.Equals(keyValue.Value.Name, "Hungary", StringComparison.OrdinalIgnoreCase);
-                if (isEqualHungary || isEqualDenmark)
-                {
-                    keyValue.Value.IsTelenorSupported = true;
-                }
-            }
-        }
+        } 
     }
 }

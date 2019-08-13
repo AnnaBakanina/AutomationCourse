@@ -44,6 +44,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GismeteoTests.cs" />
+    <Compile Include="WizzAirTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

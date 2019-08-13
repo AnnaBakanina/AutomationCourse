@@ -6,19 +6,22 @@ namespace Mac_Task5
         public string TaskName { get; set; }
         public int TaskPriority { get; set; }
         public int TaskLevel { get; set; }
+        public int TaskSortParameter { get; set; }
 
         public Task()
         {
             TaskName = "";
             TaskPriority = 0;
             TaskLevel = 0;
+            TaskSortParameter = 0;
         }
 
-        public Task(string name, int priority, int level)
+        public Task(string name, int priority, int level, int coef)
         {
-            this.TaskName = name;
-            this.TaskPriority = priority;
-            this.TaskLevel = level;
+            TaskName = name;
+            TaskPriority = priority;
+            TaskLevel = level;
+            TaskSortParameter = coef;
         }
     }
 }

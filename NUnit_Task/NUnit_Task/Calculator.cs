@@ -1,42 +1,39 @@
 ﻿using System;
+using System.Linq;
+
 namespace NUnit_Task
 {
     public class Calculator
     {
-        public double FirstNumber { get; set; }
-        public double SecondNumber { get; set; }
-
-        public Calculator()
+        public double AddNumbers(double[] array)
         {
-            Random rnd = new Random();
-            FirstNumber = rnd.NextDouble();
-            SecondNumber = rnd.NextDouble();
+            return array.Sum();
         }
 
-        public Calculator(double firstNumber, double seconedNumber)
+        public double SubtractNumbers(double[] array)
         {
-            FirstNumber = firstNumber;
-            SecondNumber = seconedNumber;
+            double subtractResult = array.First();
+            double s = array.First();
+            for (int i = 1; i < array.Length; i++)
+            {
+                s -= array[i];
+            }
+            return subtractResult;
         }
 
-        public double AddNumbers()
+        public double MultiplyNumbers(double[] array)
         {
-            return FirstNumber + SecondNumber;
+            double multiplyResult = 1;
+            foreach (double a in array)
+            {
+                multiplyResult *= a;
+            }
+            return multiplyResult;
         }
 
-        public double SubtractNumbers()
+        public double DivideNumbers(double firstValue, double secondValue)
         {
-            return FirstNumber - SecondNumber;
-        }
-
-        public double MultiplyNumbers()
-        {
-            return FirstNumber * SecondNumber;
-        }
-
-        public double DivideNumbers()
-        {
-            return FirstNumber / SecondNumber;
+            return firstValue / secondValue;
         }
     }
 }

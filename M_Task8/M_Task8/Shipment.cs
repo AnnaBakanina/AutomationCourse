@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace M_Task8
@@ -6,6 +7,9 @@ namespace M_Task8
     [Serializable]
     public class Shipment
     {
+        [NonSerialized]
+        List<Product> products = new List<Product> { new Product("NewProduct", 23.758) };
+
         [JsonProperty(PropertyName = "ShipmentID")]
         public string ShipmentID { get; set; }
 
@@ -16,7 +20,7 @@ namespace M_Task8
         public Order ShipmentOrderID { get; set; }
 
         [JsonProperty(PropertyName = "ShipmentStatus")]
-        public bool ShipmentStatus { get; set; } //true-order sent, false not sent
+        public bool ShipmentStatus { get; set; } //true - order sent, false not sent
 
         public Shipment()
         {
@@ -26,11 +30,11 @@ namespace M_Task8
             ShipmentStatus = false;
         }
 
-        public Shipment(string shipmentID, string address, /*Order orderID,*/ bool shipmentStatus)
+        public Shipment(string shipmentID, string address, bool shipmentStatus)
         {
             this.ShipmentID = shipmentID;
             this.Address = address;
-            this.ShipmentOrderID = new Order();
+            this.ShipmentOrderID = new Order(1234, 3, products);
             this.ShipmentStatus = shipmentStatus;
         }
     }

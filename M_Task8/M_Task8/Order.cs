@@ -27,11 +27,11 @@ namespace M_Task8
             ProductType = null;
         }
 
-        public Order(int orderID, int numberOfItems, /*string customerID*/ List<Product> productType)
+        public Order(int orderID, int numberOfItems, List<Product> productType)
         {
             this.OrderID = orderID;
             this.NumberOfItems = numberOfItems;
-            this.CustomerID = new Customer();
+            this.CustomerID = new Customer("CustomerID","CustomerName");
             this.ProductType = productType;
         }
     }

@@ -8,7 +8,6 @@ namespace Mac_Task5
         public static void Main(string[] args)
         {
             ConsoleHelper.AddListOfTasks();
-            //ConsoleHelper.OutputList();
             ConsoleHelper.SortList();
             Console.WriteLine("Sorted tasks: ");
             ConsoleHelper.OutputList();

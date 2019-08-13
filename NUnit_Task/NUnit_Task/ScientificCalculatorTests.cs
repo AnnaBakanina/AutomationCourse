@@ -2,55 +2,87 @@
 using System;
 namespace NUnit_Task
 {
+    //классическая модель/ доп. тест на сравнение что число находится в промежутке между один числом и другим/
+    //анотации: _репит, _ретрай, _ордер, _категория, _игнор, _pairvise
+
     [TestFixture, Description("Tests fot Scientific CalculatorTests")]
+    [Category("Scientific Calculator Tests")]
+
     public class ScientificCalculatorTests
     {
-        [Test, Description("Test pow option")]
+        private double startRange;
+        private double endRange;
+        private double firstNumber;
+        private double secondNumber;
+        private double percent;
+        private double[] arrayToTest;
+        ScientificCalculator ScientificCalculator;
+
+        [SetUp]
+        public void SetUp()
+        {
+            startRange = 9;
+            endRange = 20;
+            firstNumber = 12.47;
+            secondNumber = 25.93;
+            percent = 10;
+            arrayToTest = new double[] { 2, 3.344, 4, 5.54, 6, 3.987 };
+            ScientificCalculator = new ScientificCalculator();
+        }
+
+        [Test, Description("Test that value is in the range of two values"), Order(2)]
+        public void CheckIfValueIsInTheRange()
+        {
+            bool comparisonResult = firstNumber > startRange && firstNumber < endRange;
+
+            Assert.AreEqual(comparisonResult, true,
+                $"{firstNumber} is in the range from {startRange} to {endRange}");
+        }
+
+        [Test, Pairwise, Order(2)]
+        public void PairwiseTest(
+            [Values("value1", "value2")] string initialValues,
+            [Values("+", "-", "*")] string actions,
+            [Values("value3")] string valuesToAdd
+            )
+        {
+            Console.WriteLine($"{firstNumber},{secondNumber},{startRange}", initialValues, actions, valuesToAdd);
+        }
+
+        [Test, Description("Test pow option"), Repeat(1)]
         public void PowOption()
         {
-            double numberOne = 10.234;
-            double numberTwo = 3.543;
+            double powResult = ScientificCalculator.Pow(firstNumber, secondNumber);
 
-            ScientificCalculator obj = new ScientificCalculator();
-            double powResult = obj.Pow(numberOne, numberTwo);
-
-            Assert.That(Math.Pow(numberOne, Math.Abs(numberTwo)), Is.EqualTo(powResult), "Check pow option: false");
+            Assert.That(Math.Pow(firstNumber, Math.Abs(secondNumber)), Is.EqualTo(powResult),
+                $"Check that {firstNumber}^{secondNumber} is equal to {Math.Pow(firstNumber, Math.Abs(secondNumber))}");
         }
 
         [Test, Description("Test percent option")]
         public void PercentOption()
         {
-            double numberOne = 10.234;
-            double numberTwo = 15.543;
+            double percentResult = ScientificCalculator.Percents(firstNumber, percent);
 
-            ScientificCalculator obj = new ScientificCalculator();
-            double percentResult = obj.Percents(numberOne, numberTwo);
-
-            Assert.That(numberOne / 100 * numberTwo, Is.EqualTo(percentResult), "Check percent option: false");
+            Assert.That(firstNumber / 100 * percent, Is.EqualTo(percentResult),
+                $"Check that {percent}% from {firstNumber} is equal to {firstNumber / 100 * percent}");
         }
 
         [Test, Description("Test mod option")]
         public void ModOption()
         {
-            double numberOne = 10.234;
-            double numberTwo = 15.543;
+            double modResult = ScientificCalculator.Mod(firstNumber, secondNumber);
 
-            ScientificCalculator obj = new ScientificCalculator();
-            double modResult = obj.Mod(numberOne, numberTwo);
-
-            Assert.That(numberOne % numberTwo, Is.EqualTo(modResult), "Check mod option: false");
+            Assert.That(firstNumber % secondNumber, Is.EqualTo(modResult),
+                $"Check that {firstNumber}%{secondNumber} is equal to {firstNumber % secondNumber}");
         }
 
         [Test, Description("Test find sum of array option")]
         public void ArraySumOption()
         {
-            double sumOfValues = 0.0;
-            double[] array = { 2.456, 3, 6.4875, 3, 4.484, 5 };
+            double sumOfValues = 0;
+            double sumResult = ScientificCalculator.SumOfArrayValues(arrayToTest);
 
-            ScientificCalculator obj = new ScientificCalculator();
-            double sumResult = obj.SumOfArrayValues(array);
-
-            foreach (double a in array)
+            foreach (double a in arrayToTest)
             {
                 sumOfValues += a;
             }
@@ -61,12 +93,9 @@ namespace NUnit_Task
         public void ArrayMinOption()
         {
             double minValue = double.MaxValue;
-            double[] array = { 2.456, 3, 6.4875, 3, 4.484, 5 };
+            double minResult = ScientificCalculator.MinValueOfArray(arrayToTest);
 
-            ScientificCalculator obj = new ScientificCalculator();
-            double minResult = obj.MinValueOfArray(array);
-
-            foreach(double a in array)
+            foreach(double a in arrayToTest)
             {
                 if (a<minValue)
                 {
@@ -76,16 +105,13 @@ namespace NUnit_Task
             Assert.That(minValue, Is.EqualTo(minResult), "Check find min value of array: false");
         }
 
-        [Test, Description("Test find max of array option")]
+        [Test, Description("Test find max of array option"), Retry(2)]
         public void ArrayMaxOption()
         {
             double maxValue = double.MinValue;
-            double[] array = { 2.456, 3, 6.4875, 3, 4.484, 5 };
+            double maxResult = ScientificCalculator.MaxValueOfArray(arrayToTest);
 
-            ScientificCalculator obj = new ScientificCalculator();
-            double maxResult = obj.MaxValueOfArray(array);
-
-            foreach (double a in array)
+            foreach (double a in arrayToTest)
             {
                 if (a > maxValue)
                 {
@@ -94,5 +120,15 @@ namespace NUnit_Task
             }
             Assert.That(maxValue, Is.EqualTo(maxResult), "Check find max value of array: false");
         }
+
+        [TestCase(2,3, ExpectedResult = 5), Order(1)]
+        [Ignore("No need to check anymore")]
+        [TestCase(4,-6, ExpectedResult = -2)]
+        [TestCase(2.4, 92, ExpectedResult = 90.4)]
+        public double AddNumbers(double a, double b)
+        {
+            return a + b;
+        }
+
     }
 }

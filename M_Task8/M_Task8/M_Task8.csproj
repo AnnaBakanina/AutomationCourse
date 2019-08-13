@@ -40,8 +40,8 @@
     <Compile Include="Order.cs" />
     <Compile Include="Shipment.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="Serialization.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="FileHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
